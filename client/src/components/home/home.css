@@ -1,0 +1,101 @@
+/* =========================================
+   NORTH STONE — HERO ANIMATIONS
+   ========================================= */
+
+@keyframes ns-hero-enter {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes ns-hero-title-reveal {
+  from {
+    transform: translateY(110%);
+  }
+
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes ns-hero-pulse {
+  0%,
+  100% {
+    opacity: 0.35;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 0.8;
+    transform: scale(1.8);
+  }
+}
+
+/* Entrance transitions */
+
+.ns-hero-enter {
+  opacity: 0;
+  animation: ns-hero-enter 750ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation-delay: var(--hero-delay, 0ms);
+}
+
+.ns-hero-title-line {
+  display: block;
+  animation: ns-hero-title-reveal 950ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* Availability indicator */
+
+.ns-hero-pulse {
+  animation: ns-hero-pulse 2.4s ease-in-out infinite;
+}
+
+/* Staggered service labels */
+
+.ns-hero-service {
+  display: inline-block;
+  opacity: 0;
+  animation: ns-hero-enter 600ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* Buttons */
+
+.ns-hero-button {
+  transition:
+    background-color 280ms ease,
+    color 280ms ease,
+    border-color 280ms ease,
+    transform 280ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.ns-hero-arrow {
+  transition: transform 280ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.ns-hero-button:hover .ns-hero-arrow {
+  transform: translate(2px, -2px);
+}
+
+/* Accessibility */
+
+@media (prefers-reduced-motion: reduce) {
+  .ns-hero-enter,
+  .ns-hero-title-line,
+  .ns-hero-pulse,
+  .ns-hero-service {
+    animation: none !important;
+    opacity: 1;
+    transform: none;
+  }
+
+  .ns-hero-button,
+  .ns-hero-arrow {
+    transition: none !important;
+  }
+}
